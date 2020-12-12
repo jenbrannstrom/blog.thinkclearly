@@ -1,0 +1,139 @@
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) { 
+	header .container{
+		max-width: 1230px;
+	}
+
+	.container{
+		max-width: 1170px;
+	}
+}
+
+@media (max-width: 1199px) { 
+	.hero_area {
+    	padding: 50px 0;
+    }
+
+    .package_box {
+	    padding: 0px;
+	}
+}
+
+@media (max-width: 991px) {
+	#menu{
+		display: none;
+	}
+
+	.hamburger-menu {
+		display: block;
+	}
+
+	.hero_area h1 {
+	    font-size: 80px;
+	}
+
+	.cart_toggler{
+		padding-left: 0;
+	}
+
+	.hero_area h2 {
+	    font-size: 55px;
+	}
+
+	.testimonial_area .media{
+		max-width: 220px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.dropdown-menu-right {
+	    right: auto !important;
+	    left: 0 !important;
+	}
+
+	header {
+	    padding: 25px 0 10px;
+	}
+
+	.header_bottom h3 {
+	    font-size: 30px;
+	}
+
+	.video_area{
+		text-align: center;
+	}
+
+	.footer_bottom {
+	    font-size: 15px;
+	    line-height: 1.5;
+	}
+
+	.package_area h3{
+		font-size: 20px;
+	}
+}
+
+/*Medium devices (tablets, 767px and down)*/
+@media (max-width: 767px) {
+	.hero_area {
+	    padding: 2px 0 50px;
+	}
+
+	.header_bottom h3 {
+	    margin-top: 15px;
+	    font-size: 20px;
+	}
+
+	.dianetics_area .item h2 {
+	    font-size: 25px;
+	}
+
+	.dianetics_area .item p {
+	    font-size: 17px;
+	}
+
+	.quote_area h2 {
+	    font-size: 25px;
+	    line-height: 30px;
+	}
+
+	footer{
+		text-align: center;
+	}
+
+	.widget-title {
+	    font-size: 20px;
+	    display: inline-block;
+	}
+}
+
+/*Small devices (landscape phones, 575px and down)*/
+@media (max-width: 575px) {
+	.hero_area h2 {
+	    font-size: 40px;
+	}
+	.hero_area h1 {
+	    font-size: 60px;
+	}
+	.overlay .play i {
+	    font-size: 60px;
+	}
+
+	.quote_area {
+	    padding: 40px 0;
+	}
+
+	.quote_area h2 br{
+		display: none;
+	}
+
+	.title {
+	    font-size: 27px;
+	}
+
+	.text-comment {
+	    font-size: 16px;
+	    line-height: 24px;
+	}
+}
+

@@ -1,0 +1,150 @@
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) { 
+	.container{
+		max-width: 1200px;
+	}
+}
+
+@media (max-width: 1199px) { 
+	#menu li a {
+	    padding: 5px 18px;
+	    font-size: 13px;
+	}
+
+	.left_content {
+	    padding-right: 50px;
+	}
+
+	h1 {
+	    font-size: 33px;
+	    line-height: 33px;
+	}
+
+	.sidebar_title h3 {
+	    padding: 11px 15px 9px;
+	    font-size: 14px;
+	}
+}
+
+@media (max-width: 991px) {
+	#menu{
+		position: fixed;
+		left: -100%;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		background-color: #ffffff;
+		z-index: 1;
+		display: block;
+		-webkit-transition: 0.4s;
+		-o-transition: 0.4s;
+		transition: 0.4s;
+		padding-top: 145px;
+	}
+
+	.logo {
+	    padding: 15px 10px;
+	}
+
+	#menu.current{
+		left: 0;
+	}
+
+	#menu li{
+		display: block;
+		text-align: center;
+		margin-top: 10px;
+	}
+
+	#menu li a{
+		color: #126a96;
+		border: none !important;
+		-webkit-box-shadow: none !important;
+		        box-shadow: none !important;
+		margin: 0 !important;
+	}
+
+	.hamburger-menu {
+		display: block;
+	}
+	.ofcavas-menu {
+		display: block;
+	}
+
+	.left_content {
+	    padding-right: 0px;
+	}
+
+	.side_bar{
+		padding-top: 40px;
+		margin-top: 25px;
+	}
+
+	.side_bar::before {
+	    top: 0;
+	    bottom: auto;
+	    left: 0px;
+	    width: 100%;
+	    height: 1px;
+	    background: #d9d9d9;
+	}
+
+	.side_bar iframe {
+	    height: 206px;
+	}
+
+	.niceScroll_box{
+		height: 245px;
+		overflow-x: hidden;
+	}
+}
+
+/*Medium devices (tablets, 767px and down)*/
+@media (max-width: 767px) {
+	.social-buttons{
+		margin-bottom: 10px;
+	}
+	.social-buttons a {
+	    margin-top: 0px; 
+	    margin-bottom: 0px; 
+	}
+
+	.footer{
+		text-align: center;
+	}
+}
+
+/*Small devices (landscape phones, 575px and down)*/
+@media (max-width: 575px) {
+	.row.px_10 {
+	    padding-left: 0px !important;
+	    padding-right: 0px !important;
+	}
+
+	.logo {
+	    padding: 15px 0px;
+	}
+
+	.hamburger-menu {
+	    right: 15px;
+	}
+
+	h1 {
+	    font-size: 29px;
+	    line-height: 32px;
+	}
+
+	.side_bar iframe{
+		height: auto;
+	}
+
+	.author_panel{
+		flex-direction: column;
+	}
+
+	.author_panel img {
+	    margin-right: 0px;
+	    margin-bottom: 20px;
+	}
+}
+
