@@ -6,6 +6,9 @@
 //  */
 
 import React from "react"
+import Mainav from "./Mainav"
+import Mainnavbar from "./Mainnavbar"
+import { Container, Col, Row } from "react-bootstrap"
 // import { useStaticQuery, graphql } from "gatsby"
 
 // import Header from "./Header"
@@ -20,12 +23,21 @@ const Layout: React.FC<Props> = ({ children }) => {
   return (
     <>
       <div className="layout">
+        {/* <Container className="layout"> */}
+        <Row>
+          <Col className="toggled-nav" lg={12} md={6} sm={8}>
+            <Mainav />
+          </Col>
+          <Col className="toggled-nav" lg={12} md={6} sm={4}>
+            <Mainnavbar />
+          </Col>
+        </Row>
+        {/* </Container> */}
         {/* <Header/>
                 <main>
                     {children}
                 </main>
                 <Footer/> */}
-        <h1>hello from home</h1>
         {children}
       </div>
     </>

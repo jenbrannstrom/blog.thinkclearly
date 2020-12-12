@@ -8,49 +8,48 @@ import Layout from "../components/Layout"
 // import "../css/article/style.css"
 // import "../js/article/main.js"
 
-// type Props = {
-//   data: {
-//     artcl: {
-//       article: {
-//         article: string
-//       }
-//       description: {
-//         description: string
-//       }
-//       mainImage: {
-//         fluid: any
-//         file: any
-//       }
-//       title: string
-//     }
-//     allPosts: {
-//       nodes: {
-//         title: string
-//         slug: string
-//         contentful_id: string
-//         mainImage: {
-//           fluid: any
-//         }
-//         smallImage: {
-//           fluid: any
-//         }
-//         article: {
-//           article: string
-//         }
-//         description: {
-//           description: string
-//         }
-//       }[]
-//     }
-//   }
-// }
+type Props = {
+  data: {
+    artcl: {
+      contentful_id: any
+      createdAt: any
+      bodyPart1: {
+        bodyPart1: string
+      }
+      bodyPart2?: {
+        bodyPart2: string
+      }
+      bodyPart3?: {
+        bodyPart3: string
+      }
+      authorImage: {
+        fluid: any
+      }
+      imageOne: {
+        fluid: any
+      }
+      imageTwo?: {
+        fluid: any
+      }
+      imageThree?: {
+        fluid: any
+      }
+      sidebareImages?: {
+        fluid: any
+      }
+      title: string
+      authorName: string
+      categories: string
+    }
+  }
+}
 
-const ComponentName: React.FC = ({}) => {
-  // const {artcl, allPosts} = data
+const ComponentName: React.FC<Props> = ({ data }) => {
+  const { artcl } = data
   return (
     <Layout>
       {/* <Seo title={artcl.title} description={artcl.description.description} image={artcl.mainImage.file}/> */}
-      <h1>hello from article</h1>
+      {/* <h1>hello from {artcl.title}</h1> */}
     </Layout>
   )
 }
@@ -61,7 +60,7 @@ export const query = graphql`
       authorName
       authorImage {
         fluid {
-          src
+          ...GatsbyContentfulFluid
         }
       }
       categories
@@ -78,18 +77,18 @@ export const query = graphql`
       createdAt
       imageOne {
         fluid {
-          src
+          ...GatsbyContentfulFluid
         }
       }
       imageTwo {
         fluid {
-          src
+          ...GatsbyContentfulFluid
         }
       }
       title
       sidebareImages {
         fluid {
-          src
+          ...GatsbyContentfulFluid
         }
       }
     }
