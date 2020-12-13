@@ -5,6 +5,7 @@ import Layout from "../components/Layout"
 import { Container, Row, Col } from "react-bootstrap"
 import ImageSection from "../components/ImageSection"
 import ArticleSection from "../components/ArticleSection"
+import AuthorSection from "../components/AuthorSection"
 // import Seo from "../components/Seo"
 // import "../css/article/helper.css"
 // import "../css/article/responsive.css"
@@ -50,6 +51,9 @@ type Props = {
       }
       title: string
       authorName: string
+      authorBio: {
+        authorBio: string
+      }
       categories: string
     }
   }
@@ -84,6 +88,16 @@ const ComponentName: React.FC<Props> = ({ data }) => {
               {section2}
               {image3}
               {section3}
+              <div className="categories">
+                <p>{`CATEGORIES : ${artcl.categories}`}</p>
+              </div>
+              <Row>
+                <AuthorSection
+                  AuthImg={artcl.authorImage.file.url}
+                  AuthName={artcl.authorName}
+                  AuthBio={artcl.authorBio.authorBio}
+                />
+              </Row>
             </Row>
           </Col>
           <Col lg={3} md={12}>
@@ -91,7 +105,6 @@ const ComponentName: React.FC<Props> = ({ data }) => {
             <Row>{/* <MoreArticles/> */}</Row>
           </Col>
         </Row>
-        <Row>{/* <AuthorSection/> */}</Row>
       </Container>
       {/* <Seo title={artcl.title} description={artcl.description.description} image={artcl.mainImage.file}/> */}
       {/* <h1>hello from {artcl.title}</h1> */}

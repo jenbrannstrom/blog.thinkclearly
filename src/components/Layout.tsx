@@ -8,6 +8,7 @@
 import React from "react"
 import Mainav from "./Mainav"
 import Mainnavbar from "./Mainnavbar"
+import Footer from "./Footer"
 import { Col, Row } from "react-bootstrap"
 // import { useStaticQuery, graphql } from "gatsby"
 
@@ -39,6 +40,7 @@ const Layout: React.FC<Props> = ({ children }) => {
                 </main>
                 <Footer/> */}
         {children}
+        <Footer />
       </div>
     </>
   )
