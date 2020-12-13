@@ -3,16 +3,34 @@ import { Row, Col, Image, Container } from "react-bootstrap"
 
 type Props = {
   Articles: {
-    title: string
-    imageOne: {
-      file: {
-        url: any
+    article: {
+      title: string
+      imageOne: {
+        file: {
+          url: any
+        }
       }
-    }
-    createdAt: any
-  }
+      createdAt: any
+    }[]
+  }[]
 }
 const MoreArticles: React.FC<Props> = ({ Articles }) => {
+  let sidebarArticles = Articles.map(art => (
+    <Row style={{ marginTop: "30px" }} className="justify-content-start">
+      <Col>
+        <Image
+          style={{ width: "150px", height: "auto" }}
+          src={art.article[0].imageOne.file.url}
+        />
+      </Col>
+      <Col>
+        <h3 style={{ fontSize: "16px", width: "100%" }}>
+          {art.article[0].title}
+        </h3>
+      </Col>
+    </Row>
+  ))
+
   return (
     <>
       <Container style={{ marginTop: "50px" }}>
@@ -21,19 +39,7 @@ const MoreArticles: React.FC<Props> = ({ Articles }) => {
             DON’T MISS THESE TRENDING HEALTH STORIES
           </div>
         </Row>
-        <Row style={{ marginTop: "30px" }} className="justify-content-start">
-          <Col>
-            <Image
-              style={{ width: "150px", height: "auto" }}
-              src={Articles.imageOne.file.url}
-            />
-          </Col>
-          <Col>
-            <h3 style={{ fontSize: "16px", width: "100%" }}>
-              {Articles.title}
-            </h3>
-          </Col>
-        </Row>
+        {sidebarArticles}
       </Container>
     </>
   )

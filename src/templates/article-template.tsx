@@ -99,7 +99,7 @@ const ComponentName: React.FC<Props> = ({ data }) => {
               <SidebarImages Img={artcl.sidebareImages[0].file.url} />
             </Row>
             <Row>
-              <MoreArticles Articles={artcl.similarArticles[0].article[0]} />
+              <MoreArticles Articles={artcl.similarArticles} />
             </Row>
           </Col>
         </Row>
