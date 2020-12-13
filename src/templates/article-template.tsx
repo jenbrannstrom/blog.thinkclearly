@@ -2,6 +2,9 @@ import React from "react"
 // import Image from "gatsby-image"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
+import { Container, Row, Col } from "react-bootstrap"
+import ImageSection from "../components/ImageSection"
+import ArticleSection from "../components/ArticleSection"
 // import Seo from "../components/Seo"
 // import "../css/article/helper.css"
 // import "../css/article/responsive.css"
@@ -14,25 +17,33 @@ type Props = {
       contentful_id: any
       createdAt: any
       bodyPart1: {
-        bodyPart1: string
+        json: any
       }
       bodyPart2?: {
-        bodyPart2: string
+        json: any
       }
       bodyPart3?: {
-        bodyPart3: string
+        json: any
       }
       authorImage: {
-        fluid: any
+        file: {
+          url: any
+        }
       }
       imageOne: {
-        fluid: any
+        file: {
+          url: any
+        }
       }
       imageTwo?: {
-        fluid: any
+        file: {
+          url: any
+        }
       }
       imageThree?: {
-        fluid: any
+        file: {
+          url: any
+        }
       }
       sidebareImages?: {
         fluid: any
@@ -46,8 +57,42 @@ type Props = {
 
 const ComponentName: React.FC<Props> = ({ data }) => {
   const { artcl } = data
+  let image2 = artcl.imageTwo ? (
+    <ImageSection Img={artcl.imageTwo.file.url} />
+  ) : null
+  let section2 = artcl.bodyPart2 ? (
+    <ArticleSection Text={artcl.bodyPart1.json} />
+  ) : null
+  let image3 = artcl.imageThree ? (
+    <ImageSection Img={artcl.imageThree.file.url} />
+  ) : null
+  let section3 = artcl.bodyPart3 ? (
+    <ArticleSection Text={artcl.bodyPart3.json} />
+  ) : null
   return (
     <Layout>
+      <Container fluid>
+        <Row>
+          <Col lg={9} md={12}>
+            <Row>
+              <h1 className="article-title">{artcl.title}</h1>
+            </Row>
+            <Row>
+              <ImageSection Img={artcl.imageOne.file.url} />
+              <ArticleSection Text={artcl.bodyPart1.json} />
+              {image2}
+              {section2}
+              {image3}
+              {section3}
+            </Row>
+          </Col>
+          <Col lg={3} md={12}>
+            <Row>{/* <SidebarImages/> */}</Row>
+            <Row>{/* <MoreArticles/> */}</Row>
+          </Col>
+        </Row>
+        <Row>{/* <AuthorSection/> */}</Row>
+      </Container>
       {/* <Seo title={artcl.title} description={artcl.description.description} image={artcl.mainImage.file}/> */}
       {/* <h1>hello from {artcl.title}</h1> */}
     </Layout>
@@ -59,16 +104,16 @@ export const query = graphql`
     artcl: contentfulArticle(slug: { eq: $slug }) {
       authorName
       authorImage {
-        fluid {
-          ...GatsbyContentfulFluid
+        file {
+          url
         }
       }
       categories
       bodyPart2 {
-        bodyPart2
+        json
       }
       bodyPart1 {
-        bodyPart1
+        json
       }
       authorBio {
         authorBio
@@ -76,19 +121,19 @@ export const query = graphql`
       contentful_id
       createdAt
       imageOne {
-        fluid {
-          ...GatsbyContentfulFluid
+        file {
+          url
         }
       }
       imageTwo {
-        fluid {
-          ...GatsbyContentfulFluid
+        file {
+          url
         }
       }
       title
       sidebareImages {
-        fluid {
-          ...GatsbyContentfulFluid
+        file {
+          url
         }
       }
     }

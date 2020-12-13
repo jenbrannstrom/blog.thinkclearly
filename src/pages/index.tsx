@@ -11,7 +11,7 @@ const IndexPage: React.FC = ({}) => {
   return (
     <Layout>
       {/* <Seo title="الأقتصاد بالفلاقي" image={mainLogo} /> */}
-      <h1>hello from home</h1>
+      <h1>COMING SOON</h1>
     </Layout>
   )
 }

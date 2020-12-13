@@ -8,7 +8,7 @@
 import React from "react"
 import Mainav from "./Mainav"
 import Mainnavbar from "./Mainnavbar"
-import { Container, Col, Row } from "react-bootstrap"
+import { Col, Row } from "react-bootstrap"
 // import { useStaticQuery, graphql } from "gatsby"
 
 // import Header from "./Header"

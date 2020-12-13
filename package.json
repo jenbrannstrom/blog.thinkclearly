@@ -6,6 +6,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@babel/core": "^7.12.9",
+    "@contentful/rich-text-react-renderer": "^14.1.2",
     "@types/react-helmet": "^6.1.0",
     "babel-plugin-styled-components": "^1.11.1",
     "bootstrap": "^4.5.3",
