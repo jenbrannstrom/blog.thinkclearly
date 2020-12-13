@@ -11,7 +11,9 @@ const IndexPage: React.FC = ({}) => {
   return (
     <Layout>
       {/* <Seo title="الأقتصاد بالفلاقي" image={mainLogo} /> */}
-      <h1>COMING SOON</h1>
+      <div>
+        <h1 style={{ height: "400px !important" }}>COMING SOON ..</h1>
+      </div>
     </Layout>
   )
 }

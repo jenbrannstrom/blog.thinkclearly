@@ -6,11 +6,8 @@ import { Container, Row, Col } from "react-bootstrap"
 import ImageSection from "../components/ImageSection"
 import ArticleSection from "../components/ArticleSection"
 import AuthorSection from "../components/AuthorSection"
-// import Seo from "../components/Seo"
-// import "../css/article/helper.css"
-// import "../css/article/responsive.css"
-// import "../css/article/style.css"
-// import "../js/article/main.js"
+import SidebarImages from "../components/SidebarImages"
+import MoreArticles from "../components/MoreArticles"
 
 type Props = {
   data: {
@@ -20,10 +17,7 @@ type Props = {
       bodyPart1: {
         json: any
       }
-      bodyPart2?: {
-        json: any
-      }
-      bodyPart3?: {
+      bodyPart2: {
         json: any
       }
       authorImage: {
@@ -36,25 +30,33 @@ type Props = {
           url: any
         }
       }
-      imageTwo?: {
+      imageTwo: {
         file: {
           url: any
         }
       }
-      imageThree?: {
+      sidebareImages: {
         file: {
           url: any
         }
-      }
-      sidebareImages?: {
-        fluid: any
-      }
+      }[]
       title: string
       authorName: string
       authorBio: {
         authorBio: string
       }
       categories: string
+      similarArticles: {
+        article: {
+          title: string
+          imageOne: {
+            file: {
+              url: any
+            }
+          }
+          createdAt: any
+        }[]
+      }[]
     }
   }
 }
@@ -67,17 +69,11 @@ const ComponentName: React.FC<Props> = ({ data }) => {
   let section2 = artcl.bodyPart2 ? (
     <ArticleSection Text={artcl.bodyPart1.json} />
   ) : null
-  let image3 = artcl.imageThree ? (
-    <ImageSection Img={artcl.imageThree.file.url} />
-  ) : null
-  let section3 = artcl.bodyPart3 ? (
-    <ArticleSection Text={artcl.bodyPart3.json} />
-  ) : null
   return (
     <Layout>
       <Container fluid>
         <Row>
-          <Col lg={9} md={12}>
+          <Col style={{ paddingRight: "75px" }} lg={9} md={12}>
             <Row>
               <h1 className="article-title">{artcl.title}</h1>
             </Row>
@@ -86,8 +82,6 @@ const ComponentName: React.FC<Props> = ({ data }) => {
               <ArticleSection Text={artcl.bodyPart1.json} />
               {image2}
               {section2}
-              {image3}
-              {section3}
               <div className="categories">
                 <p>{`CATEGORIES : ${artcl.categories}`}</p>
               </div>
@@ -101,8 +95,12 @@ const ComponentName: React.FC<Props> = ({ data }) => {
             </Row>
           </Col>
           <Col lg={3} md={12}>
-            <Row>{/* <SidebarImages/> */}</Row>
-            <Row>{/* <MoreArticles/> */}</Row>
+            <Row>
+              <SidebarImages Img={artcl.sidebareImages[0].file.url} />
+            </Row>
+            <Row>
+              <MoreArticles Articles={artcl.similarArticles[0].article[0]} />
+            </Row>
           </Col>
         </Row>
       </Container>
@@ -122,10 +120,10 @@ export const query = graphql`
         }
       }
       categories
-      bodyPart2 {
+      bodyPart1 {
         json
       }
-      bodyPart1 {
+      bodyPart2 {
         json
       }
       authorBio {
@@ -149,45 +147,19 @@ export const query = graphql`
           url
         }
       }
+      similarArticles {
+        article {
+          title
+          imageOne {
+            file {
+              url
+            }
+          }
+          createdAt
+        }
+      }
     }
-    # allPosts:allContentfulPost(limit: 6) {
-    #   nodes {
-    #     article {
-    #       article
-    #     }
-    #     description {
-    #       description
-    #     }
-    #     smallImage {
-    #       fluid {
-    #         ...GatsbyContentfulFluid
-    #       }
-    #     }
-    #     title
-    #     slug
-    #     contentful_id
-    #   }
-    # }
   }
 `
 
 export default ComponentName
-
-// query GetAllPost {
-//   allContentfulPost(limit: 6) {
-//     nodes {
-//       article {
-//         article
-//       }
-//       description {
-//         description
-//       }
-//       smallImage {
-//         fluid {
-//           src
-//         }
-//       }
-//       title
-//     }
-//   }
-// }

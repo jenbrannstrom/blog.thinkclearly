@@ -1,13 +1,5 @@
 import React from "react"
-import {
-  Button,
-  Form,
-  FormControl,
-  Nav,
-  Navbar,
-  NavDropdown,
-} from "react-bootstrap"
-import logo from "../images/home/logo.png"
+import { Nav, Navbar } from "react-bootstrap"
 
 const links = [
   {
@@ -70,30 +62,6 @@ const Mainnavbar: React.FC = () => {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-
-      {/* <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand href="#home">App</Navbar.Brand>
-        <Navbar.Toggle />
-        <Navbar.Collapse>
-          <Nav className="mr-auto">
-            <Nav.Link href="#foo">foo</Nav.Link>
-            <Nav.Link href="#bar">bar</Nav.Link>
-            <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/1">action 1</NavDropdown.Item>
-              <NavDropdown.Item href="#action/2">action 2</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3">action 3</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/4">action 4</NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-          <Nav>
-            <Nav.Link href="#baz">baz</Nav.Link>
-            <Nav.Link eventKey={2} href="#qux">
-              qux
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar> */}
     </>
   )
 }
