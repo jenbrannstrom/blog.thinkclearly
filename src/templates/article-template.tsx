@@ -48,21 +48,20 @@ type Props = {
       }
       categories: string
       similarArticles: {
-        article: {
-          title: string
-          previewImage: {
-            file: {
-              url: any
-            }
+        description: string
+        previewImage: {
+          file: {
+            url: any
           }
-          createdAt: any
-        }[]
+        }
+        articleLink: string
       }[]
       previewImage: {
         file: {
           url: any
         }
       }
+      imageLink: string
     }
   }
 }
@@ -75,6 +74,7 @@ const ComponentName: React.FC<Props> = ({ data }) => {
   let section2 = artcl.bodyPart2 ? (
     <ArticleSection Text={artcl.bodyPart1.json} />
   ) : null
+  console.log(artcl.imageLink)
   return (
     <Layout>
       <Seo
@@ -112,7 +112,10 @@ const ComponentName: React.FC<Props> = ({ data }) => {
           </Col>
           <Col lg={4} md={12}>
             <Row>
-              <SidebarImages Img={artcl.sidebareImages[0].file.url} />
+              <SidebarImages
+                ImageLink={artcl.imageLink}
+                Img={artcl.sidebareImages[0].file.url}
+              />
             </Row>
             <Row className="img-container">
               <MoreArticles Articles={artcl.similarArticles} />
@@ -127,6 +130,7 @@ const ComponentName: React.FC<Props> = ({ data }) => {
 export const query = graphql`
   query GetSinglePost($slug: String) {
     artcl: contentfulArticle(slug: { eq: $slug }) {
+      imageLink
       authorName
       authorImage {
         file {
@@ -162,14 +166,12 @@ export const query = graphql`
         }
       }
       similarArticles {
-        article {
-          title
-          previewImage {
-            file {
-              url
-            }
+        articleLink
+        description
+        previewImage {
+          file {
+            url
           }
-          createdAt
         }
       }
       previewImage {
