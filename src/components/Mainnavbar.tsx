@@ -40,7 +40,7 @@ const Mainnavbar: React.FC = () => {
   return (
     <>
       <Navbar collapseOnSelect expand="lg" className="main-navbar">
-        <Navbar.Toggle />
+        <Navbar.Toggle className="nav-toggle" />
         <Navbar.Collapse>
           <Nav className="mr-auto">
             {links.map((link, index) => (

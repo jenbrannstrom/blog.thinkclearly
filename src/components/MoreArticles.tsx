@@ -15,8 +15,12 @@ type Props = {
   }[]
 }
 const MoreArticles: React.FC<Props> = ({ Articles }) => {
-  let sidebarArticles = Articles.map(art => (
-    <Row style={{ marginTop: "30px" }} className="justify-content-start">
+  let sidebarArticles = Articles.map((art, index) => (
+    <Row
+      key={index}
+      style={{ marginTop: "30px" }}
+      className="justify-content-start"
+    >
       <Col>
         <Image
           style={{ width: "150px", height: "auto" }}

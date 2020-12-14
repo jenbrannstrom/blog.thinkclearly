@@ -79,7 +79,7 @@ const ComponentName: React.FC<Props> = ({ data }) => {
       />
       <Container fluid>
         <Row>
-          <Col style={{ paddingRight: "75px" }} lg={9} md={12}>
+          <Col className="article-body" lg={9} md={12}>
             <Row>
               <h1 className="article-title">{artcl.title}</h1>
             </Row>
@@ -104,7 +104,7 @@ const ComponentName: React.FC<Props> = ({ data }) => {
             <Row>
               <SidebarImages Img={artcl.sidebareImages[0].file.url} />
             </Row>
-            <Row>
+            <Row className="img-container">
               <MoreArticles Articles={artcl.similarArticles} />
             </Row>
           </Col>

@@ -5,7 +5,7 @@ import logo from "../images/home/logo.png"
 const Mainav: React.FC = () => {
   return (
     <>
-      <Navbar style={{ maxWidth: "60%" }} bg="white">
+      <Navbar bg="white">
         <Navbar.Brand href="#home">
           <img
             src={logo}

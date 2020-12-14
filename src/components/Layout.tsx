@@ -26,10 +26,10 @@ const Layout: React.FC<Props> = ({ children }) => {
       <div className="layout">
         {/* <Container className="layout"> */}
         <Row>
-          <Col className="toggled-nav" lg={12} md={6} sm={8}>
+          <Col className="toggled-nav" lg={12} md={6} sm={8} xs={8}>
             <Mainav />
           </Col>
-          <Col className="toggled-nav" lg={12} md={6} sm={4}>
+          <Col className="toggled-nav" lg={12} md={6} sm={4} xs={4}>
             <Mainnavbar />
           </Col>
         </Row>
