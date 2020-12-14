@@ -10,7 +10,7 @@ const SidebarImages: React.FC<Props> = ({ Img, ImageLink }) => {
     <>
       <div style={{ marginTop: "40px", marginLeft: "15px" }}>
         <a href={ImageLink}>
-          <Image src={Img} />
+          <Image style={{ maxWidth: "300px" }} src={Img} />
         </a>
       </div>
     </>
