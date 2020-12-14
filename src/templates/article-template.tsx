@@ -50,7 +50,7 @@ type Props = {
       similarArticles: {
         article: {
           title: string
-          imageOne: {
+          previewImage: {
             file: {
               url: any
             }
@@ -58,6 +58,11 @@ type Props = {
           createdAt: any
         }[]
       }[]
+      previewImage: {
+        file: {
+          url: any
+        }
+      }
     }
   }
 }
@@ -154,12 +159,17 @@ export const query = graphql`
       similarArticles {
         article {
           title
-          imageOne {
+          previewImage {
             file {
               url
             }
           }
           createdAt
+        }
+      }
+      previewImage {
+        file {
+          url
         }
       }
     }

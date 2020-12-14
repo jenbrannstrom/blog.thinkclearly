@@ -5,7 +5,7 @@ type Props = {
   Articles: {
     article: {
       title: string
-      imageOne: {
+      previewImage: {
         file: {
           url: any
         }
@@ -21,13 +21,13 @@ const MoreArticles: React.FC<Props> = ({ Articles }) => {
       style={{ marginTop: "30px" }}
       className="justify-content-start"
     >
-      <Col>
+      <Col lg={4} md={4} sm={4} xs={4}>
         <Image
-          style={{ width: "150px", height: "auto" }}
-          src={art.article[0].imageOne.file.url}
+          style={{ width: "62px", height: "auto" }}
+          src={art.article[0].previewImage.file.url}
         />
       </Col>
-      <Col>
+      <Col lg={8} md={8} sm={8} xs={8}>
         <h3 style={{ fontSize: "16px", width: "100%" }}>
           {art.article[0].title}
         </h3>
