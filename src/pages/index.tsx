@@ -1,16 +1,12 @@
 import * as React from "react"
-// import mainLogo from "../images/mainLogo.png"
+import logo from "../images/home/logo.png"
 import Layout from "../components/Layout"
-// import Seo from "../components/Seo"
-// import "../css/home/helper.css"
-// import "../css/home/responsive.css"
-// import "../css/home/owl.carousel.min.css"
-// import "../js/home/main.js"
+import Seo from "../components/Seo"
 
 const IndexPage: React.FC = ({}) => {
   return (
     <Layout>
-      {/* <Seo title="الأقتصاد بالفلاقي" image={mainLogo} /> */}
+      <Seo title="news headlines" image={logo} />
       <div>
         <h1 style={{ height: "400px !important" }}>COMING SOON ..</h1>
       </div>

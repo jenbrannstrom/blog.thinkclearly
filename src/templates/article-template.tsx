@@ -8,6 +8,7 @@ import ArticleSection from "../components/ArticleSection"
 import AuthorSection from "../components/AuthorSection"
 import SidebarImages from "../components/SidebarImages"
 import MoreArticles from "../components/MoreArticles"
+import Seo from "../components/Seo"
 
 type Props = {
   data: {
@@ -71,6 +72,11 @@ const ComponentName: React.FC<Props> = ({ data }) => {
   ) : null
   return (
     <Layout>
+      <Seo
+        title={artcl.title}
+        description={artcl.title}
+        image={artcl.imageOne.file.url}
+      />
       <Container fluid>
         <Row>
           <Col style={{ paddingRight: "75px" }} lg={9} md={12}>
@@ -104,8 +110,6 @@ const ComponentName: React.FC<Props> = ({ data }) => {
           </Col>
         </Row>
       </Container>
-      {/* <Seo title={artcl.title} description={artcl.description.description} image={artcl.mainImage.file}/> */}
-      {/* <h1>hello from {artcl.title}</h1> */}
     </Layout>
   )
 }

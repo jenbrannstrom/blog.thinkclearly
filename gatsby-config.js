@@ -3,8 +3,8 @@ require("dotenv").config({
 })
 module.exports = {
   siteMetadata: {
-    title: `الإقتصاد بالفلاقي`,
-    description: `متابعة لأهم تطورات الإقتصاد التونسي و العالمي بالفلاقي`,
+    title: `news headlines`,
+    description: `today's articles`,
     author: `@َAminsid2`,
   },
   plugins: [
