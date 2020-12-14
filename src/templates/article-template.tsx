@@ -82,9 +82,14 @@ const ComponentName: React.FC<Props> = ({ data }) => {
         description={artcl.title}
         image={artcl.imageOne.file.url}
       />
-      <Container fluid>
+      <Container>
         <Row>
-          <Col className="article-body" lg={9} md={12}>
+          <Col
+            style={{ maxWidth: "862px" }}
+            className="article-body"
+            lg={8}
+            md={12}
+          >
             <Row>
               <h1 className="article-title">{artcl.title}</h1>
             </Row>
@@ -105,7 +110,7 @@ const ComponentName: React.FC<Props> = ({ data }) => {
               </Row>
             </Row>
           </Col>
-          <Col lg={3} md={12}>
+          <Col lg={4} md={12}>
             <Row>
               <SidebarImages Img={artcl.sidebareImages[0].file.url} />
             </Row>

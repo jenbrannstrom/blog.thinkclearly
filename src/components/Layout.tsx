@@ -9,7 +9,7 @@ import React from "react"
 import Mainav from "./Mainav"
 import Mainnavbar from "./Mainnavbar"
 import Footer from "./Footer"
-import { Col, Row } from "react-bootstrap"
+import { Col, Row, Container } from "react-bootstrap"
 // import { useStaticQuery, graphql } from "gatsby"
 
 // import Header from "./Header"
@@ -23,7 +23,7 @@ type Props = {
 const Layout: React.FC<Props> = ({ children }) => {
   return (
     <>
-      <div className="layout">
+      <Container className="layout">
         {/* <Container className="layout"> */}
         <Row>
           <Col className="toggled-nav" lg={12} md={6} sm={8} xs={8}>
@@ -41,7 +41,7 @@ const Layout: React.FC<Props> = ({ children }) => {
                 <Footer/> */}
         {children}
         <Footer />
-      </div>
+      </Container>
     </>
   )
 }

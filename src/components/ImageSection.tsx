@@ -8,7 +8,7 @@ type Props = {
 const ImageSection: React.FC<Props> = ({ Img }) => {
   return (
     <>
-      <Image style={{ margin: "20px auto" }} src={Img} fluid />
+      <Image style={{ margin: "20px 0" }} src={Img} fluid />
     </>
   )
 }
