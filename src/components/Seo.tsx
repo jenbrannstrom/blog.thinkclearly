@@ -55,12 +55,12 @@ const Seo: React.FC<Props> = ({ description, image, lang = "ar", title }) => {
       <meta name="twitter:card" content="summary" />
       {/* <meta name='twitter:creater' content={site.siteMetadata.author} /> */}
       <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={metaDescription} />
+      {/* <meta name="twitter:description" content={metaDescription} /> */}
       <meta name="twitter:image" content={image} />
       <meta property="og:url" content="blog.klaresdenken.de" />
       <meta property="og:type" content="article" />
       <meta property="og:title" content={title} />
-      <meta property="og:description" content={metaDescription} />
+      {/* <meta property="og:description" content={metaDescription} /> */}
       <meta property="og:image" content={image} />
     </Helmet>
   )
