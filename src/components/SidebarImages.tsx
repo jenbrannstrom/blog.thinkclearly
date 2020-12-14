@@ -7,7 +7,7 @@ type Props = {
 const SidebarImages: React.FC<Props> = ({ Img }) => {
   return (
     <>
-      <div style={{ marginTop: "40px" }}>
+      <div style={{ marginTop: "40px", marginLeft: "15px" }}>
         <Image src={Img} />
       </div>
     </>
