@@ -6,7 +6,7 @@ const Mainav: React.FC = () => {
   return (
     <>
       <Navbar bg="white">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="https://klaresdenken.de/">
           <img
             src={logo}
             style={{ maxWidth: "100%", height: "auto" }}

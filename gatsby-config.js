@@ -3,8 +3,8 @@ require("dotenv").config({
 })
 module.exports = {
   siteMetadata: {
-    title: `news headlines`,
-    description: `today's articles`,
+    title: `klares denken`,
+    description: `klares denken`,
     author: `@َAminsid2`,
   },
   plugins: [

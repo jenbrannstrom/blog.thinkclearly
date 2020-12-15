@@ -15,7 +15,7 @@ const AuthorSection: React.FC<Props> = ({ AuthImg, AuthName, AuthBio }) => {
         <Row className="justify-content-start">
           <Col md="auto" xs={12}>
             <div style={{}}>
-              <Image src={AuthImg} />
+              <Image style={{ maxWidth: "100px" }} src={AuthImg} />
             </div>
           </Col>
           <Col md={9} xs={12}>

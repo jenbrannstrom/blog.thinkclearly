@@ -18,20 +18,12 @@ type Props = {
       bodyPart1: {
         json: any
       }
-      bodyPart2: {
-        json: any
-      }
       authorImage: {
         file: {
           url: any
         }
       }
       imageOne: {
-        file: {
-          url: any
-        }
-      }
-      imageTwo: {
         file: {
           url: any
         }
@@ -68,12 +60,6 @@ type Props = {
 
 const ComponentName: React.FC<Props> = ({ data }) => {
   const { artcl } = data
-  let image2 = artcl.imageTwo ? (
-    <ImageSection Img={artcl.imageTwo.file.url} />
-  ) : null
-  let section2 = artcl.bodyPart2 ? (
-    <ArticleSection Text={artcl.bodyPart2.json} />
-  ) : null
   console.log(artcl.imageLink)
   return (
     <Layout>
@@ -96,8 +82,6 @@ const ComponentName: React.FC<Props> = ({ data }) => {
             <Row>
               <ImageSection Img={artcl.imageOne.file.url} />
               <ArticleSection Text={artcl.bodyPart1.json} />
-              {image2}
-              {section2}
               <div className="categories">
                 <p>{`CATEGORIES : ${artcl.categories}`}</p>
               </div>
@@ -141,20 +125,12 @@ export const query = graphql`
       bodyPart1 {
         json
       }
-      bodyPart2 {
-        json
-      }
       authorBio {
         authorBio
       }
       contentful_id
       createdAt
       imageOne {
-        file {
-          url
-        }
-      }
-      imageTwo {
         file {
           url
         }
