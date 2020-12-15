@@ -72,7 +72,7 @@ const ComponentName: React.FC<Props> = ({ data }) => {
     <ImageSection Img={artcl.imageTwo.file.url} />
   ) : null
   let section2 = artcl.bodyPart2 ? (
-    <ArticleSection Text={artcl.bodyPart1.json} />
+    <ArticleSection Text={artcl.bodyPart2.json} />
   ) : null
   console.log(artcl.imageLink)
   return (
