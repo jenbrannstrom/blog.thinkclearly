@@ -15,58 +15,117 @@ type Props = {
     artcl: {
       contentful_id: any
       createdAt: any
-      bodyPart1: {
-        json: any
+      authorBio: {
+        authorBio: string
       }
       authorImage: {
         file: {
           url: any
         }
       }
-      imageOne: {
-        file: {
-          url: any
-        }
-      }
-      sidebareImages: {
-        file: {
-          url: any
-        }
-      }[]
-      title: string
       authorName: string
-      authorBio: {
-        authorBio: string
-      }
       categories: string
-      similarArticles: {
-        description: string
-        previewImage: {
+      footerLink: {
+        footerLink: string
+      }
+      footerText: {
+        footerText: string
+      }
+      navbar: {
+        navbarLinkName: string
+        navbarLink: string
+      }
+      title: string
+      articleBody: {
+        id: number
+        image?: {
           file: {
             url: any
           }
         }
-        articleLink: string
+        hyperlink?: string
+        title?: string
+        text?: {
+          json: any
+        }
+      }[]
+      sidebar: {
+        id: number
+        hyperlink?: string
+        image?: {
+          file: {
+            url: any
+          }
+        }
+        description?: string
+        articleLink?: string
+        previewImage?: {
+          file: {
+            url: string
+          }
+        }
       }[]
       previewImage: {
         file: {
-          url: any
+          url: string
         }
       }
-      imageLink: string
     }
   }
 }
 
 const ComponentName: React.FC<Props> = ({ data }) => {
   const { artcl } = data
-  console.log(artcl.imageLink)
+  console.log(artcl)
+  let aticleBody = null,
+    sidebar = null
+  if (artcl.articleBody) {
+    aticleBody = artcl.articleBody.map((section: any, index: any) => {
+      if (section.image) {
+        return (
+          <a key={index} href={section.hyperlink}>
+            <ImageSection Img={section.image.file.url} />
+          </a>
+        )
+      } else if (section.text) {
+        return <ArticleSection key={index} Text={section.text.json} />
+      } else {
+        return null
+      }
+    })
+  }
+
+  if (artcl.sidebar) {
+    sidebar = artcl.sidebar.map((section: any, index: any) => {
+      if (section.image) {
+        return (
+          <SidebarImages
+            key={index}
+            ImageLink={section.hyperlink}
+            Img={section.image.file.url}
+          />
+        )
+      } else if (section.articleLink) {
+        return (
+          <MoreArticles
+            key={index}
+            previewImg={section.previewImage.file.url}
+            link={section.articleLink}
+            description={section.description}
+          />
+        )
+      } else {
+        return null
+      }
+    })
+  }
+
   return (
     <Layout>
       <Seo
         title={artcl.title}
         description={artcl.title}
-        image={artcl.imageOne.file.url}
+        image={artcl.previewImage.file.url}
       />
       <Container>
         <Row>
@@ -80,8 +139,7 @@ const ComponentName: React.FC<Props> = ({ data }) => {
               <h1 className="article-title">{artcl.title}</h1>
             </Row>
             <Row>
-              <ImageSection Img={artcl.imageOne.file.url} />
-              <ArticleSection Text={artcl.bodyPart1.json} />
+              {aticleBody}
               <div className="categories">
                 <p>{`CATEGORIES : ${artcl.categories}`}</p>
               </div>
@@ -95,14 +153,15 @@ const ComponentName: React.FC<Props> = ({ data }) => {
             </Row>
           </Col>
           <Col lg={4} md={12}>
-            <Row>
+            {/* <Row>
               <SidebarImages
                 ImageLink={artcl.imageLink}
                 Img={artcl.sidebareImages[0].file.url}
               />
-            </Row>
+            </Row> */}
             <Row className="img-container">
-              <MoreArticles Articles={artcl.similarArticles} />
+              {/* <MoreArticles Articles={artcl.similarArticles} /> */}
+              {sidebar}
             </Row>
           </Col>
         </Row>
@@ -114,45 +173,85 @@ const ComponentName: React.FC<Props> = ({ data }) => {
 export const query = graphql`
   query GetSinglePost($slug: String) {
     artcl: contentfulArticle(slug: { eq: $slug }) {
-      imageLink
-      authorName
+      __typename
+
+      previewImage {
+        file {
+          url
+        }
+      }
+      createdAt
+      authorBio {
+        authorBio
+      }
       authorImage {
         file {
           url
         }
       }
+      authorName
       categories
-      bodyPart1 {
-        json
-      }
-      authorBio {
-        authorBio
-      }
       contentful_id
-      createdAt
-      imageOne {
-        file {
-          url
-        }
+      footerLink {
+        footerLink
+      }
+      footerText {
+        footerText
+      }
+      navbar {
+        navbarLinkName
+        navbarLink
       }
       title
-      sidebareImages {
-        file {
-          url
+      articleBody {
+        __typename
+        ... on Node {
+          ... on ContentfulImageWithHyperlinkSection {
+            id
+            image {
+              file {
+                url
+              }
+            }
+            hyperlink
+          }
         }
-      }
-      similarArticles {
-        articleLink
-        description
-        previewImage {
-          file {
-            url
+        ... on Node {
+          ... on ContentfulTextSection {
+            id
+            title
+            text {
+              json
+            }
           }
         }
       }
-      previewImage {
-        file {
-          url
+      sidebar {
+        __typename
+
+        ... on Node {
+          ... on ContentfulImageWithHyperlinkSection {
+            id
+            hyperlink
+            image {
+              file {
+                url
+              }
+            }
+          }
+        }
+
+        ... on Node {
+          ... on ContentfulSidebarArticle {
+            id
+            description
+            articleLink
+            previewImage {
+              file {
+                url
+              }
+            }
+          }
         }
       }
     }
