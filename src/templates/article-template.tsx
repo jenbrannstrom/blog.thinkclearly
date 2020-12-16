@@ -9,6 +9,9 @@ import AuthorSection from "../components/AuthorSection"
 import SidebarImages from "../components/SidebarImages"
 import MoreArticles from "../components/MoreArticles"
 import Seo from "../components/Seo"
+import Footer from "../components/Footer"
+import Mainav from "../components/Mainav"
+import Mainnavbar from "../components/Mainnavbar"
 
 type Props = {
   data: {
@@ -34,7 +37,7 @@ type Props = {
       navbar: {
         navbarLinkName: string
         navbarLink: string
-      }
+      }[]
       title: string
       articleBody: {
         id: number
@@ -127,6 +130,14 @@ const ComponentName: React.FC<Props> = ({ data }) => {
         description={artcl.title}
         image={artcl.previewImage.file.url}
       />
+      <Row>
+        <Col className="toggled-nav" lg={12} md={6} sm={8} xs={8}>
+          <Mainav />
+        </Col>
+        <Col className="toggled-nav" lg={12} md={6} sm={4} xs={4}>
+          <Mainnavbar Links={artcl.navbar} />
+        </Col>
+      </Row>
       <Container>
         <Row>
           <Col
@@ -165,6 +176,10 @@ const ComponentName: React.FC<Props> = ({ data }) => {
             </Row>
           </Col>
         </Row>
+        <Footer
+          FooterText={artcl.footerText.footerText}
+          FooterLink={artcl.footerLink.footerLink}
+        />
       </Container>
     </Layout>
   )

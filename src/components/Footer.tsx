@@ -1,10 +1,17 @@
 import React from "react"
 
-const Footer: React.FC = () => {
+type Props = {
+  FooterText: string
+  FooterLink: string
+}
+
+const Footer: React.FC<Props> = ({ FooterText, FooterLink }) => {
   return (
     <>
       <div className="footr">
-        <p>©2020 Copyright Health Headlines. All Rights reserved.</p>
+        <a href={FooterLink}>
+          <p>{FooterText}</p>
+        </a>
       </div>
     </>
   )

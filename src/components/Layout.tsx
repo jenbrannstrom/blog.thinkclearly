@@ -1,20 +1,5 @@
-// /**
-//  * Layout component that queries for data
-//  * with Gatsby's useStaticQuery component
-//  *
-//  * See: https://www.gatsbyjs.org/docs/use-static-query/
-//  */
-
 import React from "react"
-import Mainav from "./Mainav"
-import Mainnavbar from "./Mainnavbar"
-import Footer from "./Footer"
-import { Col, Row, Container } from "react-bootstrap"
-// import { useStaticQuery, graphql } from "gatsby"
-
-// import Header from "./Header"
-// import Footer from "./Footer"
-// import "./layout.css"
+import { Container } from "react-bootstrap"
 
 type Props = {
   children?: any
@@ -23,25 +8,7 @@ type Props = {
 const Layout: React.FC<Props> = ({ children }) => {
   return (
     <>
-      <Container className="layout">
-        {/* <Container className="layout"> */}
-        <Row>
-          <Col className="toggled-nav" lg={12} md={6} sm={8} xs={8}>
-            <Mainav />
-          </Col>
-          <Col className="toggled-nav" lg={12} md={6} sm={4} xs={4}>
-            <Mainnavbar />
-          </Col>
-        </Row>
-        {/* </Container> */}
-        {/* <Header/>
-                <main>
-                    {children}
-                </main>
-                <Footer/> */}
-        {children}
-        <Footer />
-      </Container>
+      <Container className="layout">{children}</Container>
     </>
   )
 }
