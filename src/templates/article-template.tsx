@@ -34,6 +34,8 @@ type Props = {
       footerText: {
         footerText: string
       }
+      footerLink2: string
+      footerText2: string
       navbar: {
         navbarLinkName: string
         navbarLink: string
@@ -179,6 +181,8 @@ const ComponentName: React.FC<Props> = ({ data }) => {
         <Footer
           FooterText={artcl.footerText.footerText}
           FooterLink={artcl.footerLink.footerLink}
+          FooterText2={artcl.footerText2}
+          FooterLink2={artcl.footerLink2}
         />
       </Container>
     </Layout>
@@ -213,6 +217,8 @@ export const query = graphql`
       footerText {
         footerText
       }
+      footerLink2
+      footerText2
       navbar {
         navbarLinkName
         navbarLink
