@@ -5,6 +5,7 @@ type Props = {
   FooterLink: string
   FooterText2: string
   FooterLink2: string
+  footerNormalText: string
 }
 
 const Footer: React.FC<Props> = ({
@@ -12,10 +13,13 @@ const Footer: React.FC<Props> = ({
   FooterLink,
   FooterText2,
   FooterLink2,
+  footerNormalText
 }) => {
+  console.log(FooterLink, FooterLink2)
   return (
     <>
       <div className="footr">
+        <p style={{display: "block"}}>{footerNormalText}</p>
         <a href={FooterLink}>
           <p style={{ display: "inline" }}>{FooterText}</p>
         </a>

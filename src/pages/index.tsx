@@ -31,6 +31,9 @@ type Props = {
       footerLink: {
         footerLink: string
       }
+      footerNormalText: {
+        footerNormalText: string
+      }
       footerText: {
         footerText: string
       }
@@ -81,7 +84,6 @@ type Props = {
 
 const IndexPage: React.FC<Props> = ({ data }) => {
   const { artcl } = data
-  console.log(artcl)
   let aticleBody = null,
     sidebar = null
   if (artcl.articleBody) {
@@ -182,6 +184,7 @@ const IndexPage: React.FC<Props> = ({ data }) => {
           FooterLink={artcl.footerLink.footerLink}
           FooterText2={artcl.footerText2}
           FooterLink2={artcl.footerLink2}
+          footerNormalText={artcl.footerNormalText.footerNormalText}
         />
       </Container>
     </Layout>
@@ -212,6 +215,9 @@ export const query = graphql`
       contentful_id
       footerLink {
         footerLink
+      }
+      footerNormalText {
+        footerNormalText
       }
       footerText {
         footerText
