@@ -1,17 +1,281 @@
 import * as React from "react"
-import logo from "../images/home/logo.png"
+// import Image from "gatsby-image"
+import { graphql } from "gatsby"
 import Layout from "../components/Layout"
+import { Container, Row, Col } from "react-bootstrap"
+import ImageSection from "../components/ImageSection"
+import ArticleSection from "../components/ArticleSection"
+import AuthorSection from "../components/AuthorSection"
+import SidebarImages from "../components/SidebarImages"
+import MoreArticles from "../components/MoreArticles"
 import Seo from "../components/Seo"
+import Footer from "../components/Footer"
+import Mainav from "../components/Mainav"
+import Mainnavbar from "../components/Mainnavbar"
 
-const IndexPage: React.FC = ({}) => {
+type Props = {
+  data: {
+    artcl: {
+      contentful_id: any
+      createdAt: any
+      authorBio: {
+        authorBio: string
+      }
+      authorImage: {
+        file: {
+          url: any
+        }
+      }
+      authorName: string
+      categories: string
+      footerLink: {
+        footerLink: string
+      }
+      footerText: {
+        footerText: string
+      }
+      footerLink2: string
+      footerText2: string
+      navbar: {
+        navbarLinkName: string
+        navbarLink: string
+      }[]
+      title: string
+      articleBody: {
+        id: number
+        image?: {
+          file: {
+            url: any
+          }
+        }
+        hyperlink?: string
+        title?: string
+        text?: {
+          json: any
+        }
+      }[]
+      sidebar: {
+        id: number
+        hyperlink?: string
+        image?: {
+          file: {
+            url: any
+          }
+        }
+        description?: string
+        articleLink?: string
+        previewImage?: {
+          file: {
+            url: string
+          }
+        }
+      }[]
+      previewImage: {
+        file: {
+          url: string
+        }
+      }
+    }
+  }
+}
+
+const IndexPage: React.FC<Props> = ({ data }) => {
+  const { artcl } = data
+  console.log(artcl)
+  let aticleBody = null,
+    sidebar = null
+  if (artcl.articleBody) {
+    aticleBody = artcl.articleBody.map((section: any, index: any) => {
+      if (section.image) {
+        return (
+          <a key={index} href={section.hyperlink}>
+            <ImageSection Img={section.image.file.url} />
+          </a>
+        )
+      } else if (section.text) {
+        return <ArticleSection key={index} Text={section.text.json} />
+      } else {
+        return null
+      }
+    })
+  }
+
+  if (artcl.sidebar) {
+    sidebar = artcl.sidebar.map((section: any, index: any) => {
+      if (section.image) {
+        return (
+          <SidebarImages
+            key={index}
+            ImageLink={section.hyperlink}
+            Img={section.image.file.url}
+          />
+        )
+      } else if (section.articleLink) {
+        return (
+          <MoreArticles
+            key={index}
+            previewImg={section.previewImage.file.url}
+            link={section.articleLink}
+            description={section.description}
+          />
+        )
+      } else {
+        return null
+      }
+    })
+  }
   return (
     <Layout>
-      <Seo title="news headlines" image={logo} />
-      <div>
-        <h1 style={{ height: "400px !important" }}>COMING SOON ..</h1>
-      </div>
+      <Seo
+        title={artcl.title}
+        description={artcl.title}
+        image={artcl.previewImage.file.url}
+      />
+      <Row>
+        <Col className="toggled-nav" lg={12} md={6} sm={8} xs={8}>
+          <Mainav />
+        </Col>
+        <Col className="toggled-nav" lg={12} md={6} sm={4} xs={4}>
+          <Mainnavbar Links={artcl.navbar} />
+        </Col>
+      </Row>
+      <Container>
+        <Row>
+          <Col
+            style={{ maxWidth: "862px" }}
+            className="article-body"
+            lg={8}
+            md={12}
+          >
+            <Row>
+              <h1 className="article-title">{artcl.title}</h1>
+            </Row>
+            <Row>
+              {aticleBody}
+              <div className="categories">
+                <p>{`CATEGORIES : ${artcl.categories}`}</p>
+              </div>
+              <Row>
+                <AuthorSection
+                  AuthImg={artcl.authorImage.file.url}
+                  AuthName={artcl.authorName}
+                  AuthBio={artcl.authorBio.authorBio}
+                />
+              </Row>
+            </Row>
+          </Col>
+          <Col lg={4} md={12}>
+            {/* <Row>
+            <SidebarImages
+              ImageLink={artcl.imageLink}
+              Img={artcl.sidebareImages[0].file.url}
+            />
+          </Row> */}
+            <Row className="img-container">
+              {/* <MoreArticles Articles={artcl.similarArticles} /> */}
+              {sidebar}
+            </Row>
+          </Col>
+        </Row>
+        <Footer
+          FooterText={artcl.footerText.footerText}
+          FooterLink={artcl.footerLink.footerLink}
+          FooterText2={artcl.footerText2}
+          FooterLink2={artcl.footerLink2}
+        />
+      </Container>
     </Layout>
   )
 }
+
+export const query = graphql`
+  query GetHomePost {
+    artcl: contentfulArticle(slug: { eq: "home" }) {
+      __typename
+
+      previewImage {
+        file {
+          url
+        }
+      }
+      createdAt
+      authorBio {
+        authorBio
+      }
+      authorImage {
+        file {
+          url
+        }
+      }
+      authorName
+      categories
+      contentful_id
+      footerLink {
+        footerLink
+      }
+      footerText {
+        footerText
+      }
+      footerLink2
+      footerText2
+      navbar {
+        navbarLinkName
+        navbarLink
+      }
+      title
+      articleBody {
+        __typename
+        ... on Node {
+          ... on ContentfulImageWithHyperlinkSection {
+            id
+            image {
+              file {
+                url
+              }
+            }
+            hyperlink
+          }
+        }
+        ... on Node {
+          ... on ContentfulTextSection {
+            id
+            title
+            text {
+              json
+            }
+          }
+        }
+      }
+      sidebar {
+        __typename
+
+        ... on Node {
+          ... on ContentfulImageWithHyperlinkSection {
+            id
+            hyperlink
+            image {
+              file {
+                url
+              }
+            }
+          }
+        }
+
+        ... on Node {
+          ... on ContentfulSidebarArticle {
+            id
+            description
+            articleLink
+            previewImage {
+              file {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
 
 export default IndexPage
