@@ -3,8 +3,8 @@ require("dotenv").config({
 })
 module.exports = {
   siteMetadata: {
-    title: `klares denken`,
-    description: `klares denken`,
+    title: `ThinkClearly`,
+    description: `ThinkClearly`,
     author: `@َAminsid2`,
   },
   plugins: [
