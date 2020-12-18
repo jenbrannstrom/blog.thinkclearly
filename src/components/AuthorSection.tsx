@@ -11,7 +11,7 @@ const AuthorSection: React.FC<Props> = ({ AuthImg, AuthName, AuthBio }) => {
   return (
     <>
       <Container style={{}}>
-        <h2 style={{ fontSize: "23px" }}>About Author</h2>
+        <h2 style={{ fontSize: "23px" }}>About the Author</h2>
         <Row className="justify-content-start">
           <Col md="auto" xs={12}>
             <div style={{}}>

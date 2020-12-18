@@ -57,7 +57,7 @@ const Seo: React.FC<Props> = ({ description, image, lang = "ar", title }) => {
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={image} />
-      <meta property="og:url" content="blog.klaresdenken.de" />
+      <meta property="og:url" content="blog.thinkclearly.uk" />
       <meta property="og:type" content="article" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={metaDescription} />
