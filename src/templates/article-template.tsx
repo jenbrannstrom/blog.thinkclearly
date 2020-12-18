@@ -153,12 +153,12 @@ const ComponentName: React.FC<Props> = ({ data }) => {
             md={12}
           >
             <Row>
-              <Row>
-                <p className="sponsored">
+              <Row className="sponsored" lg={12} md={12} sm={12} xs={12}>
+                <p>
                   {artcl.sponsoringText !== "#" ? artcl.sponsoringText : null}
                 </p>
               </Row>
-              <Row className="article-title">
+              <Row lg={12} md={12} sm={12} xs={12} className="article-title">
                 <h1>{artcl.title}</h1>
               </Row>
             </Row>
