@@ -27,6 +27,7 @@ type Props = {
         }
       }
       authorName: string
+      sponsoringText: string
       categories: string
       footerLink: {
         footerLink: string
@@ -150,6 +151,9 @@ const IndexPage: React.FC<Props> = ({ data }) => {
             md={12}
           >
             <Row>
+              <div className="sponsored">
+                {artcl.sponsoringText !== "#" ? artcl.sponsoringText : null}
+              </div>
               <h1 className="article-title">{artcl.title}</h1>
             </Row>
             <Row>
@@ -203,6 +207,7 @@ export const query = graphql`
       }
       authorName
       categories
+      sponsoringText
       contentful_id
       footerLink {
         footerLink

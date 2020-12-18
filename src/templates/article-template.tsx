@@ -28,6 +28,7 @@ type Props = {
       }
       authorName: string
       categories: string
+      sponsoringText: string
       footerLink: {
         footerLink: string
       }
@@ -86,6 +87,7 @@ const ComponentName: React.FC<Props> = ({ data }) => {
   const { artcl } = data
   let aticleBody = null,
     sidebar = null
+
   if (artcl.articleBody) {
     aticleBody = artcl.articleBody.map((section: any, index: any) => {
       if (section.image) {
@@ -151,6 +153,9 @@ const ComponentName: React.FC<Props> = ({ data }) => {
             md={12}
           >
             <Row>
+              <div className="sponsored">
+                {artcl.sponsoringText !== "#" ? artcl.sponsoringText : null}
+              </div>
               <h1 className="article-title">{artcl.title}</h1>
             </Row>
             <Row>
@@ -194,6 +199,7 @@ export const query = graphql`
         }
       }
       createdAt
+      sponsoringText
       authorBio {
         authorBio
       }

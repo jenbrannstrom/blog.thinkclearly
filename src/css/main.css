@@ -79,7 +79,7 @@ body {
   line-height: 42px;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
-  padding-top: 40px;
+  padding-top: 20px;
 }
 
 .article-text {
@@ -142,4 +142,12 @@ body {
 .img-container div {
   margin-left: auto !important;
   margin-right: auto !important;
+}
+
+.sponsored {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 16px;
+  font-style: italic;
+  text-decoration: underline;
 }
