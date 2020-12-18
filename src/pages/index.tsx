@@ -128,7 +128,6 @@ const IndexPage: React.FC<Props> = ({ data }) => {
   }
   return (
     <Layout>
-      <h1>please work</h1>
       <Seo
         title={artcl.title}
         description={artcl.title}
