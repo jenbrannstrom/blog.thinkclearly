@@ -153,14 +153,14 @@ const ComponentName: React.FC<Props> = ({ data }) => {
             md={12}
           >
             <Row>
-              <Row>
-                <div className="sponsored">
-                  {artcl.sponsoringText !== "#" ? artcl.sponsoringText : null}
-                </div>
-              </Row>
-              <Row>
-                <h1 className="article-title">{artcl.title}</h1>
-              </Row>
+              {/* <Row>: */}
+              <p className="sponsored">
+                {artcl.sponsoringText !== "#" ? artcl.sponsoringText : null}
+              </p>
+              {/* </Row> */}
+              {/* <Row className="article-title"> */}
+              <h1 className="article-title">{artcl.title}</h1>
+              {/* </Row> */}
             </Row>
             <Row>
               {aticleBody}
