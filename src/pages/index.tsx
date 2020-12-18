@@ -151,10 +151,14 @@ const IndexPage: React.FC<Props> = ({ data }) => {
             md={12}
           >
             <Row>
-              <div className="sponsored">
-                {artcl.sponsoringText !== "#" ? artcl.sponsoringText : null}
-              </div>
-              <h1 className="article-title">{artcl.title}</h1>
+              <Row>
+                <div className="sponsored">
+                  {artcl.sponsoringText !== "#" ? artcl.sponsoringText : null}
+                </div>
+              </Row>
+              <Row>
+                <h1 className="article-title">{artcl.title}</h1>
+              </Row>
             </Row>
             <Row>
               {aticleBody}
