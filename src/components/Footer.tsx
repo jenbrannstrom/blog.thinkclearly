@@ -13,13 +13,12 @@ const Footer: React.FC<Props> = ({
   FooterLink,
   FooterText2,
   FooterLink2,
-  footerNormalText
+  footerNormalText,
 }) => {
-  console.log(FooterLink, FooterLink2)
   return (
     <>
       <div className="footr">
-        <p style={{display: "block"}}>{footerNormalText}</p>
+        <p style={{ display: "block" }}>{footerNormalText}</p>
         <a href={FooterLink}>
           <p style={{ display: "inline" }}>{FooterText}</p>
         </a>

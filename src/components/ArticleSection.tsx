@@ -7,7 +7,6 @@ type Props = {
 }
 
 const ArticleSection: React.FC<Props> = ({ Text }) => {
-  console.log(Text)
   const options = {
     renderNode: {
       [BLOCKS.EMBEDDED_ASSET]: (node: any) => (
