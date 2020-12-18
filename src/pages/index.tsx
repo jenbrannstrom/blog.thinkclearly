@@ -128,6 +128,7 @@ const IndexPage: React.FC<Props> = ({ data }) => {
   }
   return (
     <Layout>
+      <h1>please work</h1>
       <Seo
         title={artcl.title}
         description={artcl.title}
@@ -167,16 +168,7 @@ const IndexPage: React.FC<Props> = ({ data }) => {
             </Row>
           </Col>
           <Col lg={4} md={12}>
-            {/* <Row>
-            <SidebarImages
-              ImageLink={artcl.imageLink}
-              Img={artcl.sidebareImages[0].file.url}
-            />
-          </Row> */}
-            <Row className="img-container">
-              {/* <MoreArticles Articles={artcl.similarArticles} /> */}
-              {sidebar}
-            </Row>
+            <Row className="img-container">{sidebar}</Row>
           </Col>
         </Row>
         <Footer
